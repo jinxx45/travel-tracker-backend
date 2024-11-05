@@ -16,9 +16,12 @@ public class FootPrintsController {
     @Autowired
     private FootPrintRepository footPrintRepository;
 
-    @PostMapping("getAllMyFootPrints/{type}")
-    public List<FootPrint> getAllMyFootPrints(@PathVariable("type") String type){
-        return  footPrintService.getAllMyFootPrints(type);
+    @PostMapping("/getAllMyFootPrints")
+    public List<FootPrint> getAllMyFootPrints(@RequestParam(value = "type", required = false) String type) {
+        if (type == null || type.isEmpty()) {
+            return footPrintService.getAllFootPrints(); // Fetch all footprints
+        }
+        return footPrintService.getAllMyFootPrints(type); // Fetch footprints by type
     }
 
 

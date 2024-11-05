@@ -14,4 +14,8 @@ public class FootPrintService {
     public List<FootPrint> getAllMyFootPrints(String type){
         return footPrintRepository.getAllMyFootPrintsByType(type);
     }
+
+    public List<FootPrint> getAllFootPrints() {
+        return footPrintRepository.findAll();
+    }
 }
